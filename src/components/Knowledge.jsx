@@ -2,18 +2,16 @@ import React, { Component } from "react";
 import { CheckOutlined } from "@ant-design/icons";
 
 class Knowledge extends Component {
-  state = {
-    Knowledge: [
-      { Knowledge: "Bootstrap,Ant-design" },
-      { Knowledge: "GIT knowledge" },
-      { Knowledge: "Linux" },
-    ],
-  };
+  Knowledge = [
+    { Knowledge: "Bootstrap,Ant-design" },
+    { Knowledge: "GIT knowledge" },
+    { Knowledge: "Linux" },
+  ];
   render() {
     return (
       <div>
-        {this.state.Knowledge.map((khnow) => (
-          <li id="khnow">
+        {this.Knowledge.map((khnow, index) => (
+          <li id="khnow" key={index}>
             {
               <CheckOutlined
                 style={{

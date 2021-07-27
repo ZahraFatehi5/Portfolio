@@ -4,23 +4,31 @@ import Language from "./components/Language";
 import Head from "./components/header";
 import Knowledge from "./components/Knowledge";
 import PictureInfo from "./components/PictureInfo";
-import Cards from "./components/Cards";
 import Portfolio from "./components/portfolio";
+import Foot from "./components/footer";
 import "./App.css";
 
-import { Layout, Breadcrumb, Row, Col, AutoComplete } from "antd";
+import { Layout, Breadcrumb, AutoComplete } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
-const DemoBox = (props) => (
-  <p className={`height-${props.value}`}>{props.children}</p>
-);
-
-// Import Ant Design styles by less entry
 
 class SiderDemo extends React.Component {
   state = {
     collapsed: false,
   };
+  updateWindowDimension() {
+    const setCollaps =
+      document.getElementsByClassName("site-layout")[0].offsetWidth;
+    setCollaps < 800
+      ? this.setState({ collapsed: true })
+      : this.setState({ collapsed: false });
+  }
+  componentDidMount() {
+    window.addEventListener("resize", this.updateWindowDimension.bind(this));
+  }
+  componentWillMount() {
+    window.removeEventListener("resize", this.updateWindowDimension.bind(this));
+  }
   onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({ collapsed });
@@ -46,15 +54,15 @@ class SiderDemo extends React.Component {
 
           <div id={this.hide()}>
             <PictureInfo />
-            <div class="ls-divider"></div>
+            <div className="ls-divider"></div>
             <h4 id="codeSkill">Coding</h4>
             <br />
             <br />
             <Infos />
-            <div class="ls-divider"></div>
+            <div className="ls-divider"></div>
             <h4 id="codeSkill">Languages</h4>
             <Language />
-            <div class="ls-divider"></div>
+            <div className="ls-divider"></div>
             <h4 id="codeSkill">Knowledge</h4>
             <Knowledge />
             <br></br>
@@ -80,11 +88,11 @@ class SiderDemo extends React.Component {
           >
             <Head />
           </Header>
-
+          <h1 style={{ marginLeft: "5%" }}>Some Things I’ve Built</h1>
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb>
+            {/* <Breadcrumb>
               <h1>Some Things I’ve Built</h1>
-            </Breadcrumb>
+            </Breadcrumb> */}
             <div
               className="-layout-background"
               style={{
@@ -96,13 +104,19 @@ class SiderDemo extends React.Component {
             >
               <Portfolio />
             </div>
-            <Breadcrumb>
+            {/* <Breadcrumb>
               <h1>Cards</h1>
-            </Breadcrumb>
-            <Cards />
+            </Breadcrumb> */}
           </Content>
-          <Footer style={{ textAlign: "center", background: "#20202A" }}>
-            Zahra Fatehi
+          <Footer
+            className="lll"
+            style={{
+              textAlign: "center",
+              background: "#20202A",
+              color: "#fff",
+            }}
+          >
+            <Foot />
           </Footer>
         </Layout>
       </Layout>

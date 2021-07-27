@@ -7,12 +7,20 @@ class Head extends Component {
           <div className="top-head-bg"></div>
           <div className="banner-head">
             <div className="text-block-head">
-              <h1> I build things for the web.</h1>
-              <p>
-                Hello! My name is Zahra and I enjoy creating things that live on
-                the internet. My interest in web development started back in
-                2020
-              </p>
+              <div className="size_div_head">
+                <h1
+                  style={{
+                    lineHeight: 1.5,
+                  }}
+                >
+                  I build things for the web.
+                </h1>
+                <p className="biography">
+                  Hello! My name is Zahra and I enjoy creating things that live
+                  on the internet. My interest in web development started back
+                  in 2020
+                </p>
+              </div>
             </div>
           </div>
         </div>
